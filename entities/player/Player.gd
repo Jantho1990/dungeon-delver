@@ -7,7 +7,11 @@ var friction = false
 var motion = Vector2(0, 0)
 var direction = Vector2(1, 0)
 
+#######################
+# Animation variables #
+#######################
 onready var Animator = $Sprite/AnimationPlayer
+var current_animation = ''
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,6 +47,7 @@ func _physics_process(delta):
 	if motion == Vector2(0, 0):
 		idle()
 	
+	Animator.play(current_animation)
 	motion = move_and_slide(motion)
 
 ###
@@ -52,35 +57,33 @@ func _physics_process(delta):
 func move_down():
 	motion.y = min(motion.y + ACCELERATION, MAX_SPEED)
 	direction = Vector2(0, 1)
-	Animator.play('walk_down')
+	current_animation = 'walk_down'
 
 func move_left():
 	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 	direction = Vector2(-1, 0)
-	if not Animator.is_playing():
-		Animator.play('walk_left')
+	current_animation = 'walk_left'
 
 func move_right():
 	motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 	direction = Vector2(1, 0)
-	if not Animator.is_playing():
-		Animator.play('walk_right')
+	current_animation = 'walk_right'
 
 func move_up():
 	motion.y = max(motion.y - ACCELERATION, -MAX_SPEED)
 	direction = Vector2(0, -1)
-	Animator.play('walk_up')
+	current_animation = 'walk_up'
 
 func idle():
 	match direction:
 		Vector2(1, 0):
-			Animator.play("idle_right")
+			current_animation = "idle_right"
 		Vector2(-1, 0):
-			Animator.play("idle_left")
+			current_animation = "idle_left"
 		Vector2(0, 1):
-			Animator.play("idle_down")
+			current_animation = "idle_down"
 		Vector2(0, -1):
-			Animator.play("idle_up")
+			current_animation = "idle_up"
 		_: # Shouldn't happen, but here just in case.
 			direction = Vector2(1, 0)
-			Animator.play("idle_right")
+			current_animation = "idle_right"
