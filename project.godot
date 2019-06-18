@@ -32,6 +32,13 @@ DataStore="*res://scripts/DataStore.gd"
 math="*res://scripts/math.gd"
 CONSTANTS="*res://scripts/CONSTANTS.gd"
 
+[display]
+
+window/size/width=512
+window/size/height=300
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
 [importer_defaults]
 
 texture={
