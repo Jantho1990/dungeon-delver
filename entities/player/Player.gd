@@ -6,6 +6,9 @@ const MAX_SPEED = 200
 
 var friction = false
 var motion = Vector2(0, 0)
+var direction = Vector2(1, 0)
+
+onready var Animator = $Sprite/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +38,9 @@ func _physics_process(delta):
 		motion.x = lerp(motion.x, 0, 0.2)
 		motion.y = lerp(motion.y, 0, 0.2)
 	
+	if motion == Vector2(0, 0):
+		idle()
+	
 	motion = move_and_slide(motion)
 
 ###
@@ -43,12 +49,34 @@ func _physics_process(delta):
 
 func move_down():
 	motion.y = min(motion.y + ACCELERATION, MAX_SPEED)
+	direction = Vector2(0, 1)
+	Animator.play('walk_down')
 
 func move_left():
 	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
+	direction = Vector2(-1, 0)
+	Animator.play('walk_left')
 
 func move_right():
 	motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
+	direction = Vector2(1, 0)
+	Animator.play('walk_right')
 
 func move_up():
 	motion.y = max(motion.y - ACCELERATION, -MAX_SPEED)
+	direction = Vector2(0, -1)
+	Animator.play('walk_up')
+
+func idle():
+	match direction:
+		Vector2(1, 0):
+			Animator.play("idle_right")
+		Vector2(-1, 0):
+			Animator.play("idle_left")
+		Vector2(0, 1):
+			Animator.play("idle_down")
+		Vector2(0, -1):
+			Animator.play("idle_up")
+		_: # Shouldn't happen, but here just in case.
+			direction = Vector2(1, 0)
+			Animator.play("idle_right")
