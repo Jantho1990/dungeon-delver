@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://handlers/MovementHandler.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/player/Fighter-M-02 light.png" type="Texture" id=3]
+[ext_resource path="res://entities/player/Fighter-M-02 light-trans.png" type="Texture" id=3]
+[ext_resource path="res://entities/player/Fighter-M-02 light.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
@@ -18,6 +19,12 @@ current = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
+vframes = 4
+hframes = 3
+
+[node name="OldSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
 vframes = 4
 hframes = 3
 region_enabled = true
