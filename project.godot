@@ -23,6 +23,15 @@ _global_script_class_icons={
 config/name="Dungeon Delver"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://scripts/global.gd"
+helpers="*res://scripts/helpers.gd"
+EventBus="*res://scripts/EventBus.gd"
+DataStore="*res://scripts/DataStore.gd"
+math="*res://scripts/math.gd"
+CONSTANTS="*res://scripts/CONSTANTS.gd"
+
 [importer_defaults]
 
 texture={

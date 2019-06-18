@@ -52,8 +52,7 @@ func _physics_process(delta):
 func move_down():
 	motion.y = min(motion.y + ACCELERATION, MAX_SPEED)
 	direction = Vector2(0, 1)
-	if not Animator.is_playing():
-		Animator.play('walk_down')
+	Animator.play('walk_down')
 
 func move_left():
 	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
@@ -70,8 +69,7 @@ func move_right():
 func move_up():
 	motion.y = max(motion.y - ACCELERATION, -MAX_SPEED)
 	direction = Vector2(0, -1)
-	if not Animator.is_playing():
-		Animator.play('walk_up')
+	Animator.play('walk_up')
 
 func idle():
 	match direction:
