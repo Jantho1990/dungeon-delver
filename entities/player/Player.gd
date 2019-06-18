@@ -1,8 +1,7 @@
 extends KinematicBody2D
 
-const BASE_SPEED = 100
 const ACCELERATION = 50
-const MAX_SPEED = 200
+const MAX_SPEED = 150
 
 var friction = false
 var motion = Vector2(0, 0)
@@ -27,16 +26,19 @@ func _physics_process(delta):
 		$MovementHandler.move('right')
 	elif Input.is_action_pressed('ui_left'):
 		$MovementHandler.move('left')
+	else:
+		motion.x = 0
 	
 	# Movement Up/Down
 	if Input.is_action_pressed('ui_up'):
 		$MovementHandler.move('up')
 	elif Input.is_action_pressed('ui_down'):
 		$MovementHandler.move('down')
+	else:
+		motion.y = 0
 	
 	if friction:
-		motion.x = lerp(motion.x, 0, 0.2)
-		motion.y = lerp(motion.y, 0, 0.2)
+		motion = lerp(motion, Vector2(0, 0), 0.25)
 	
 	if motion == Vector2(0, 0):
 		idle()
