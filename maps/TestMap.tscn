@@ -23,4 +23,5 @@ position = Vector2( 128, 96 )
 
 [node name="Chest" parent="." instance=ExtResource( 3 )]
 position = Vector2( 434, 224 )
+direction_name = "east"
 
