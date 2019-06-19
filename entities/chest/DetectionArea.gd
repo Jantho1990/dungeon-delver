@@ -10,7 +10,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	update()
+	#update()
+	pass
 
 func _draw():
-	draw_rect(Rect2(position - $CollisionShape2D.shape.extents, $CollisionShape2D.shape.extents * 2), Color(1, 0, 0))
+	pass
+	#draw_rect(Rect2(position - $CollisionShape2D.shape.extents, $CollisionShape2D.shape.extents * 2), Color(1, 0, 0))

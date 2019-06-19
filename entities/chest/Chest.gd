@@ -21,6 +21,8 @@ var allowed_to_open = false
 export(String, 'north', 'west', 'south', 'east') var direction_name = 'north'
 
 onready var Animator = $Sprite/AnimationPlayer
+var anim_action = '_idle'
+
 onready var Detection = $DetectionPivot/DetectionOffset/DetectionArea
 var direction_vectors = {
 	'north': Vector2(0, -1),
@@ -38,15 +40,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var anim = direction_names[direction] + '_idle'
+	var anim = direction_names[direction] + anim_action
 	Animator.play(anim)
 	direction = direction_vectors[direction_name]
 	pass
 
 func on_Body_entered(body):
-	print("entered!")
-	pass
+	if body.name == 'Player':
+		print("entered!")
+		anim_action = '_active'
 
 func on_Body_exited(body):
-	print("gone")
-	pass
+	if body.name == 'Player':
+		anim_action = '_idle'
