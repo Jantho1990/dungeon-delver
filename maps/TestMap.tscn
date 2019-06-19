@@ -22,15 +22,15 @@ tile_data = PoolIntArray( -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 
 position = Vector2( 128, 96 )
 
 [node name="Chest" parent="." instance=ExtResource( 3 )]
-position = Vector2( 450, 224 )
+position = Vector2( 466, 224 )
 direction_name = "west"
 
 [node name="Chest2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 402, 192 )
+position = Vector2( 402, 176 )
 direction_name = "south"
 
 [node name="Chest3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 352, 224 )
+position = Vector2( 336, 224 )
 direction_name = "east"
 
 [node name="Chest4" parent="." instance=ExtResource( 3 )]
