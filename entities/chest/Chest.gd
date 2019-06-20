@@ -16,7 +16,8 @@ var direction_names = {
 
 var direction = Vector2(0, -1)
 
-var allowed_to_open = false
+var active = false
+var opened = false
 
 export(String, 'north', 'west', 'south', 'east') var direction_name = 'north'
 
@@ -40,16 +41,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if active and not opened and Input.is_action_just_pressed("ui_interact"):
+		opened = true
+		anim_action = '_open'
+		Animator.play(direction_names[direction] + anim_action)
+		print("hit")
+		
 	var anim = direction_names[direction] + anim_action
-	Animator.play(anim)
+	if not opened:
+		Animator.play(anim)
 	direction = direction_vectors[direction_name]
-	pass
 
 func on_Body_entered(body):
 	if body.name == 'Player':
 		print("entered!")
+		active = true
 		anim_action = '_active'
 
 func on_Body_exited(body):
 	if body.name == 'Player':
-		anim_action = '_idle'
+		active = false
+		if not opened:
+			anim_action = '_idle'

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/chest/Chest.gd" type="Script" id=1]
 [ext_resource path="res://images/spritesheets/underworld_load-atlas-32x32.png" type="Texture" id=2]
@@ -39,6 +39,35 @@ tracks/0/keys = {
 "values": [ 54 ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "east_open"
+length = 0.4
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 0.00148019, 0.000280444, 1.60388e-06, 1, 1 ),
+"update": 1,
+"values": [ 54, 55, 54, 56, 60, 61 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 1 ),
+"transitions": PoolRealArray( 1.04029e-14, 6.14444e-10, 5.45416e-09, 3.40885e-10, 9.35299e-08, 8.65262e-12, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -7, 0 ), Vector2( -7, 0 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=7]
 resource_name = "north_active"
 length = 0.6
@@ -71,6 +100,35 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "north_open"
+length = 0.4
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 6, 8, 12, 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 1 ),
+"transitions": PoolRealArray( 1.04029e-14, 1, 1, 1, 9.35299e-08, 8.65262e-12, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 14 ), Vector2( 0, 14 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -107,6 +165,35 @@ tracks/0/keys = {
 "values": [ 38 ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "south_open"
+length = 0.4
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 0.00148019, 0.000280444, 1.60388e-06, 1, 1 ),
+"update": 1,
+"values": [ 38, 39, 38, 40, 44, 45 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 1 ),
+"transitions": PoolRealArray( 1.04029e-14, 6.14444e-10, 5.45416e-09, 3.40885e-10, 9.35299e-08, 8.65262e-12, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=10]
 resource_name = "west_active"
 length = 0.6
@@ -141,6 +228,35 @@ tracks/0/keys = {
 "values": [ 22 ]
 }
 
+[sub_resource type="Animation" id=14]
+resource_name = "west_open"
+length = 0.4
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 22, 24, 28, 29 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 1 ),
+"transitions": PoolRealArray( 1.04029e-14, 6.14444e-10, 5.45416e-09, 3.40885e-10, 9.35299e-08, 8.65262e-12, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 7, 0 ), Vector2( 7, 0 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 8 )
 
@@ -157,17 +273,21 @@ __meta__ = {
 texture = ExtResource( 2 )
 vframes = 16
 hframes = 16
-frame = 6
+frame = 54
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/east_active = SubResource( 8 )
 anims/east_idle = SubResource( 1 )
+anims/east_open = SubResource( 11 )
 anims/north_active = SubResource( 7 )
 anims/north_idle = SubResource( 2 )
+anims/north_open = SubResource( 12 )
 anims/south_active = SubResource( 9 )
 anims/south_idle = SubResource( 3 )
+anims/south_open = SubResource( 13 )
 anims/west_active = SubResource( 10 )
 anims/west_idle = SubResource( 4 )
+anims/west_open = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7 )
