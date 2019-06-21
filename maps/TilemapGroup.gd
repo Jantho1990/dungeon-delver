@@ -72,6 +72,13 @@ func get_atlases_at_pos(pos):
 				atlases.push_back(tilemap.get_atlas_at_pos(pos))
 	return atlases
 
+# Return the topmost tilemap of tile at pos.
+func get_tilemap_at_pos(pos):
+	for tilemap in tilemaps:
+		if tilemap.pos_has_tile(pos):
+			return tilemap.name
+	return null
+
 # Get a list of all tilemaps with a tile at pos.
 func get_tilemaps_at_pos(pos):
 	var _tilemaps = []

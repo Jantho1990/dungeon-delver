@@ -54,6 +54,7 @@ func _ready():
 		return
 	else:
 		Entity = load(Entity)
+	print("Generator loaded")
 
 func _physics_process(delta):
 	# Called every frame. Delta is time since last frame.
@@ -63,6 +64,7 @@ func _physics_process(delta):
 	
 	entity_spawn_counter += delta
 	if allowed_to_spawn():
+		print("allowed!")
 		make_entity()
 		entity_spawn_counter -= spawn_rate
 	

@@ -7,9 +7,9 @@ const MINIMUM_SPAWN_DISTANCE = 192
 export(int) var min_random_doors = 3
 export(int) var max_random_doors = 5
 
-onready var Tilemap = $TileMapGroup
+onready var Tilemap = $TilemapGroup
 #onready var total_maps = get_parent().maps.size()
-onready var DoorContainer = $DoorContainer
+#onready var DoorContainer = $DoorContainer
 
 ###
 # Resources
@@ -27,7 +27,7 @@ func _ready():
 	var total_maps = null
 	
 	# Map is loaded, trigger any code that is waiting on this.
-	EventBus.dispatch(name + "_loaded", {
+	EventBus.dispatch("Map_loaded", {
 		"node": self
 	})
 

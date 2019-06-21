@@ -19,6 +19,8 @@ var direction = Vector2(0, -1)
 var active = false
 var opened = false
 
+var generator
+
 export(String, 'north', 'west', 'south', 'east') var direction_name = 'north'
 
 onready var Animator = $Sprite/AnimationPlayer
@@ -65,17 +67,12 @@ func on_Body_exited(body):
 			anim_action = '_idle'
 
 func spawn_acceptable(tilemap, pos):
-	var cell = tilemap.world_to_map(pos)
-	var above = tilemap.tile_above_pos(pos)
-	var below = tilemap.tile_below_pos(pos)
-
-	# Code for JungleDirt tileset
-#	if tilemap.get_cell(above.x, above.y) == -1 \
-#		and tilemap.get_cell(cell.x, cell.y) == -1 \
-#		and tilemap.get_cell(below.x, below.y) != -1:
-	# Code for SanityBrick tileset
-	if tilemap.get_cell(above.x, above.y) == -1 \
-		and tilemap.get_cell(cell.x, cell.y) == 0 \
-		and tilemap.get_cell(below.x, below.y) >= 1:
-			return true
+	var cell = tilemap.tile_at_pos(pos)
+	var tilemap_name = tilemap.get_tilemap_at_pos(pos)
+	var tilemap_count = tilemap.get_tilemaps_at_pos(pos).size()
+	if tilemap_name == "Floors" and tilemap_count == 1:
+		print("YES!", tilemap_count, " ", tilemap.get_tilemaps_at_pos(pos))
+		return true
+	else:
+		print(tilemap)
 	return false

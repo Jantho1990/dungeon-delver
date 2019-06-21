@@ -13,7 +13,7 @@ func make_entity():
 	
 	entity_count += 1
 	
-	EventBus.dispatch("add_entity", {
+	EventBus.dispatch("add_chest", {
 		"entity": new_entity,
 		"instance": false,
 		"container_id": target_container_id
