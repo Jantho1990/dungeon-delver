@@ -37,8 +37,8 @@ func calculate_dimensions():
 
 	# Return resulting bounds
 	return {
-		x = min_x * self.cell_size.x,
-		y = min_y * self.cell_size.y,
+		x = min_x * self.cell_size.x, # The leftmost position for x
+		y = min_y * self.cell_size.y, # The uppermost position for y
 		width = (max_x - min_x + 1) * self.cell_size.x,
 		height = (max_y - min_y + 1) * self.cell_size.y,
 		cells = {

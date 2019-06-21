@@ -2,6 +2,44 @@ extends Node
 
 onready var tilemaps = get_children()
 
+onready var dimensions = calculate_dimensions()
+
+# Thanks to https://godotengine.org/qa/7450/how-do-i-get-tilemaps-size-height-and-width-with-script
+func calculate_dimensions():
+	var group_dimensions = {}
+	for tilemap in tilemaps:
+		var dimensions = tilemap.dimensions
+		
+		if not group_dimensions.has("x") or \
+			dimensions.x < group_dimensions.x:
+				group_dimensions.x = dimensions.x
+		
+		if not group_dimensions.has("y") or \
+			dimensions.y < group_dimensions.y:
+				group_dimensions.y = dimensions.y
+		
+		if not group_dimensions.has("width") or \
+			dimensions.width > group_dimensions.width:
+				group_dimensions.width = dimensions.width
+		
+		if not group_dimensions.has("height") or \
+			dimensions.height > group_dimensions.height:
+				group_dimensions.height = dimensions.height
+		
+		var dcells = dimensions.cells
+		if not group_dimensions.has("cells"):
+			group_dimensions.cells = dcells
+		else:
+			var gcells = group_dimensions.cells
+			group_dimensions.cells = {
+				"x": dcells.x if dcells.x < gcells.x else gcells.x,
+				"y": dcells.y if dcells.y < gcells.y else gcells.y,
+				"width": dcells.width if dcells.width > gcells.width else gcells.width,
+				"height": dcells.height if dcells.height > gcells.height else gcells.height,
+				"count": dcells.count + gcells.count
+			}
+	return group_dimensions
+
 # Determine if the position has a tile on any of the tilemaps in the group.
 func pos_has_tile(pos):
 	for tilemap in tilemaps:
@@ -72,3 +110,30 @@ func tile_left_pos(pos):
 func tile_right_pos(pos):
 	var tile = tile_at_pos(pos)
 	return Vector2(tile.x + 1, tile.y)
+
+# Get a random cell from the tilemap grid
+func random_cell(config = {}):
+	var _range
+	if not config.has("range"):
+		_range = {
+			"x": {
+				"lower": 0,
+				"upper": dimensions.width
+			},
+			"y": {
+				"lower": 0,
+				"upper": dimensions.height
+			}
+		}
+	else:
+		_range = config.range
+		
+#	var x = math.rand(0, dimensions.width) + dimensions.x
+#	var y = math.rand(0, dimensions.height) + dimensions.y
+	var x = math.rand(_range.x.lower, _range.x.upper) + dimensions.x
+	var y = math.rand(_range.y.lower, _range.y.upper) + dimensions.y
+#	return world_to_map(Vector2(x, y))
+
+func random_cell_pos():
+#	return map_to_world(random_cell())
+	pass
