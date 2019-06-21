@@ -28,6 +28,10 @@ func _ready():
 	var test0 = tmg.get_atlas_at_pos(Vector2(0, -33))
 	var test1 = tmg.pos_has_tile(Vector2(0, 0))
 	var test2 = tmg.pos_has_tile(Vector2(-150, -100))
+	var test3 = tmg.get_atlases_at_pos(Vector2(0, 0))
+	var test4 = tmg.get_atlases_at_pos(Vector2(33, 33))
+	var test5 = tmg.get_tilemaps_at_pos(Vector2(0, 0))
+	var test6 = tmg.get_tilemaps_at_pos(Vector2(33, 33))	
 	
 	breakpoint
 	pass # Replace with function body.
