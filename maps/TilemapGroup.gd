@@ -91,6 +91,12 @@ func tile_at_pos(pos):
 			break
 	return tile
 
+# Get the pos of a tile in the tilemap grid.
+func pos_at_tile(tile, tilemap = null):
+	if tilemap == null:
+		tilemap = tilemaps[0]
+	return tilemap.map_to_world(tile)
+
 # Get tile above the tile at specified position vector
 func tile_above_pos(pos):
 	var tile = tile_at_pos(pos)
@@ -132,8 +138,7 @@ func random_cell(config = {}):
 #	var y = math.rand(0, dimensions.height) + dimensions.y
 	var x = math.rand(_range.x.lower, _range.x.upper) + dimensions.x
 	var y = math.rand(_range.y.lower, _range.y.upper) + dimensions.y
-#	return world_to_map(Vector2(x, y))
+	return tile_at_pos(Vector2(x, y))
 
 func random_cell_pos():
-#	return map_to_world(random_cell())
-	pass
+	return pos_at_tile(random_cell())

@@ -7,17 +7,14 @@ const MINIMUM_SPAWN_DISTANCE = 192
 export(int) var min_random_doors = 3
 export(int) var max_random_doors = 5
 
-onready var Tilemap = $TileMap
-onready var total_maps = get_parent().maps.size()
+onready var Tilemap = $TileMapGroup
+#onready var total_maps = get_parent().maps.size()
 onready var DoorContainer = $DoorContainer
 
 ###
 # Resources
 ###
-var Door = preload("res://entities/doors/PlaceholderDoor/PlaceholderDoor.tscn")
-
 var map_index
-var doors = null setget ,get_doors
 var totem
 
 func _ready():
@@ -33,10 +30,6 @@ func _ready():
 	EventBus.dispatch(name + "_loaded", {
 		"node": self
 	})
-
-# Get map doors
-func get_doors():
-	return $DoorContainer.get_children()
 
 # Get player from parent WorldMap
 func get_player_from_parent():

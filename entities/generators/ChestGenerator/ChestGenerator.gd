@@ -18,19 +18,3 @@ func make_entity():
 		"instance": false,
 		"container_id": target_container_id
 	})
-
-func spawn_acceptable(tilemap, pos):
-	var cell = tilemap.world_to_map(pos)
-	var above = tilemap.tile_above_pos(pos)
-	var below = tilemap.tile_below_pos(pos)
-
-	# Code for JungleDirt tileset
-#	if tilemap.get_cell(above.x, above.y) == -1 \
-#		and tilemap.get_cell(cell.x, cell.y) == -1 \
-#		and tilemap.get_cell(below.x, below.y) != -1:
-	# Code for SanityBrick tileset
-	if tilemap.get_cell(above.x, above.y) == -1 \
-		and tilemap.get_cell(cell.x, cell.y) == 0 \
-		and tilemap.get_cell(below.x, below.y) >= 1:
-			return true
-	return false
