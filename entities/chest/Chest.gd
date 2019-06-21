@@ -100,9 +100,18 @@ func is_floor_tile(tilemap, pos):
 func randomize_direction():
 	var rand_x = 0
 	var rand_y = 0
-	while ((rand_x == 0 and rand_y == 0) or (rand_x == 1 and rand_y == 1)):
-		rand_x = math.rand(0, 1)
-		rand_y = math.rand(0, 1)
+	var new_direction = Vector2(rand_x, rand_y)
+	while not acceptable_direction(new_direction):
+		rand_x = math.rand(-1, 1)
+		rand_y = math.rand(-1, 1)
+		new_direction = Vector2(rand_x, rand_y)
 	
-	direction = Vector2(rand_x, rand_y)
+	direction = new_direction
 	print(direction, " ", rand_x, " ", rand_y)
+
+# Check to see if the direction is acceptable.
+func acceptable_direction(new_direction):
+	for key in direction_vectors:
+		if new_direction == direction_vectors[key]:
+			return true
+	return false
