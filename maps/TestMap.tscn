@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://maps/TilemapGroup.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://maps/OrthogonalTileMap.gd" type="Script" id=4]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/chest/Chest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/generators/ChestGenerator/ChestGenerator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://containers/ChestContainer/ChestContainer.tscn" type="PackedScene" id=8]
 
 [node name="TestMap" type="Node2D"]
 script = ExtResource( 1 )
@@ -44,4 +46,17 @@ direction_name = "east"
 
 [node name="Chest4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 402, 272 )
+
+[node name="ChestGenerator" parent="." instance=ExtResource( 7 )]
+Entity = "res://entities/chest/Chest.tscn"
+spawn_at_start = 4
+spawn_rate = 0.001
+maximum_entities = 4
+maximum_increase_rate = 0.0
+maximum_increase_limit = 4
+randomize_spawn = true
+target_container_id = "Chest1"
+
+[node name="ChestContainer" parent="." instance=ExtResource( 8 )]
+container_id = "Chest1"
 
