@@ -15,6 +15,7 @@ var direction_names = {
 }
 
 var direction = Vector2(0, -1)
+export(bool) var random_direction = false
 
 var active = false
 var opened = false
@@ -40,6 +41,10 @@ func _ready():
 	Detection.connect("body_exited", self, "on_Body_exited")
 	
 	direction = direction_vectors[direction_name]
+	
+	if random_direction:
+		randomize_direction()
+		direction_name = direction_names[direction]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -71,8 +76,19 @@ func spawn_acceptable(tilemap, pos):
 	var tilemap_name = tilemap.get_tilemap_at_pos(pos)
 	var tilemap_count = tilemap.get_tilemaps_at_pos(pos).size()
 	if tilemap_name == "Floors" and tilemap_count == 1:
-		print("YES!", tilemap_count, " ", tilemap.get_tilemaps_at_pos(pos))
+#		print("YES!", tilemap_count, " ", tilemap.get_tilemaps_at_pos(pos))
 		return true
-	else:
-		print(tilemap)
+#	else:
+#		print(tilemap)
 	return false
+
+# Randomize the chest's direction.
+func randomize_direction():
+	var rand_x = 0
+	var rand_y = 0
+	while ((rand_x == 0 and rand_y == 0) or (rand_x == 1 and rand_y == 1)):
+		rand_x = math.rand(0, 1)
+		rand_y = math.rand(0, 1)
+	
+	direction = Vector2(rand_x, rand_y)
+	print(direction, " ", rand_x, " ", rand_y)

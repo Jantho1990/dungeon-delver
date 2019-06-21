@@ -1,9 +1,11 @@
 extends Node
 
+# Random float number
 func randfl(minimum, maximum):
 	randomize()
 	return randf() * (maximum - minimum) + minimum
 
+# Random number, floored
 func rand(minimum, maximum = null):
 	randomize()
 	if maximum == null:

@@ -56,6 +56,7 @@ maximum_increase_rate = 0.0
 maximum_increase_limit = 4
 randomize_spawn = true
 target_container_id = "Chest1"
+randomize_chest_direction = true
 
 [node name="ChestContainer" parent="." instance=ExtResource( 8 )]
 container_id = "Chest1"
