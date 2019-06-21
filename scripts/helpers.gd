@@ -19,6 +19,12 @@ func array_find(arr, function):
 			return ent
 	return null
 
+# Return the reverse of an array.
+func array_reverse(arr):
+	var ret = arr.duplicate()
+	ret.invert()
+	return ret
+
 func get_months(value): # convert to months
 	return value / 10
 
