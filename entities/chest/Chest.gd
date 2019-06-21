@@ -73,13 +73,27 @@ func on_Body_exited(body):
 
 func spawn_acceptable(tilemap, pos):
 	var cell = tilemap.tile_at_pos(pos)
+	if is_floor_tile(tilemap, pos):
+		var tile_left = tilemap.pos_at_tile(tilemap.tile_left_pos(pos))
+		var tile_right = tilemap.pos_at_tile(tilemap.tile_right_pos(pos))
+		var tile_above = tilemap.pos_at_tile(tilemap.tile_above_pos(pos))
+		var tile_below = tilemap.pos_at_tile(tilemap.tile_below_pos(pos))
+		if is_floor_tile(tilemap, tile_left) and \
+			is_floor_tile(tilemap, tile_right) and \
+			is_floor_tile(tilemap, tile_above) and \
+			is_floor_tile(tilemap, tile_below):
+#			print("YES!", tilemap_count, " ", tilemap.get_tilemaps_at_pos(pos))
+			return true
+#	else:
+#		print(tilemap)
+	return false
+
+# Check if tile is just a floor tile
+func is_floor_tile(tilemap, pos):
 	var tilemap_name = tilemap.get_tilemap_at_pos(pos)
 	var tilemap_count = tilemap.get_tilemaps_at_pos(pos).size()
 	if tilemap_name == "Floors" and tilemap_count == 1:
-#		print("YES!", tilemap_count, " ", tilemap.get_tilemaps_at_pos(pos))
 		return true
-#	else:
-#		print(tilemap)
 	return false
 
 # Randomize the chest's direction.
