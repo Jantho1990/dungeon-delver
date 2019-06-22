@@ -35,6 +35,16 @@ func _ready():
 	
 	var dims = tilemaps[0].dimensions
 	
+	var math1 = Score.createScoreValueTens()
+	var math2 = Score.createScoreValueTens(40, 80)
+	var math3 = Score.createScoreValueHundreds()
+	var math4 = Score.createScoreValueHundreds(200, 500)
+	var math5 = Score.createScoreValueThousands()
+	var math6 = Score.createScoreValueThousands(3000, 9000)
+	var math7 = Score.createScoreValueTenThousands()
+	var math8 = Score.createScoreValueTenThousands(10000, 60000)
+	var math9 = Score.createScoreValue(50, 500, 50)
+	
 	breakpoint
 	pass # Replace with function body.
 

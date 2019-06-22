@@ -55,6 +55,7 @@ EventBus="*res://scripts/EventBus.gd"
 DataStore="*res://scripts/DataStore.gd"
 math="*res://scripts/math.gd"
 CONSTANTS="*res://scripts/CONSTANTS.gd"
+Score="*res://scripts/DDScore.gd"
 
 [display]
 

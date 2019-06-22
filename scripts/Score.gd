@@ -1,6 +1,6 @@
 extends Node
 
-var points = 0
+var points = 0 setget set_points
 
 func add(value):
 	points += value

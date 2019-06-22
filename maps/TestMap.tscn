@@ -49,7 +49,7 @@ position = Vector2( 402, 272 )
 
 [node name="ChestGenerator" parent="." instance=ExtResource( 7 )]
 Entity = "res://entities/chest/Chest.tscn"
-spawn_at_start = 4
+spawn_at_start = 6
 spawn_rate = 0.001
 maximum_entities = 4
 maximum_increase_rate = 0.0
