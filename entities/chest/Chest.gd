@@ -1,5 +1,8 @@
 extends StaticBody2D
 
+var FloatingScore = preload("res://ui/FloatingScore.tscn")
+var floatingScore
+
 const animation_frames = {
 	'north': [6, 7, 8],
 	'west': [22, 23, 24],
@@ -78,6 +81,10 @@ func open_chest():
 	Animator.play(direction_names[direction] + anim_action)
 	Score.add(score)
 	print("hit")
+	floatingScore = FloatingScore.instance()
+#	floatingScore.set_position(position)
+	floatingScore.set_value(score)
+	add_child(floatingScore)
 
 func spawn_acceptable(tilemap, pos):
 	var cell = tilemap.tile_at_pos(pos)
