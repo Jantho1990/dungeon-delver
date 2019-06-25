@@ -20,6 +20,8 @@ export(bool) var random_direction = false
 var active = false
 var opened = false
 
+var score = 0
+
 var generator
 
 export(String, 'north', 'west', 'south', 'east') var direction_name = 'north'
@@ -45,14 +47,13 @@ func _ready():
 	if random_direction:
 		randomize_direction()
 		direction_name = direction_names[direction]
+	
+	create_score()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if active and not opened and Input.is_action_just_pressed("ui_interact"):
-		opened = true
-		anim_action = '_open'
-		Animator.play(direction_names[direction] + anim_action)
-		print("hit")
+		open_chest()
 		
 	var anim = direction_names[direction] + anim_action
 	if not opened:
@@ -70,6 +71,13 @@ func on_Body_exited(body):
 		active = false
 		if not opened:
 			anim_action = '_idle'
+
+func open_chest():
+	opened = true
+	anim_action = '_open'
+	Animator.play(direction_names[direction] + anim_action)
+	Score.add(score)
+	print("hit")
 
 func spawn_acceptable(tilemap, pos):
 	var cell = tilemap.tile_at_pos(pos)
@@ -115,3 +123,7 @@ func acceptable_direction(new_direction):
 		if new_direction == direction_vectors[key]:
 			return true
 	return false
+
+# Create the score value of the chest.
+func create_score():
+	score = Score.createScoreValueHundreds()
