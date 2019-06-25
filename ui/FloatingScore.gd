@@ -3,13 +3,21 @@ extends Label
 onready var tween = $Tween
 
 func _ready():
-	tween.interpolate_property(self, "rect_position", rect_position, Vector2(0, -100), 0.3,
+	visible = false
+	tween.interpolate_property(self, "visible", false, true, 0.1,
 		Tween.TRANS_LINEAR,
-		Tween.EASE_IN
+		Tween.EASE_IN,
+		0.4
 	)
-	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.3,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_IN
+	tween.interpolate_property(self, "rect_position", rect_position, Vector2(0, -100), 1.7,
+		Tween.TRANS_BACK,
+		Tween.EASE_OUT,
+		0.4
+	)
+	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.7,
+		Tween.TRANS_BACK,
+		Tween.EASE_OUT,
+		0.4
 	)
 	tween.start()
 
