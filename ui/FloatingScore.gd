@@ -1,10 +1,11 @@
 extends Label
 
 onready var tween = $Tween
+onready var visibleTween = $VisibleTween
 
 func _ready():
 	visible = false
-	tween.interpolate_property(self, "visible", false, true, 0.1,
+	visibleTween.interpolate_property(self, "visible", false, true, 0.1,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN,
 		0.4
@@ -19,6 +20,7 @@ func _ready():
 		Tween.EASE_OUT,
 		0.4
 	)
+	visibleTween.start()
 	tween.start()
 
 func _physics_process(delta):
@@ -40,3 +42,6 @@ func float_score():
 func _draw():
 #	draw_circle(Vector2(0, 0), 10, Color(1, 0, 0))
 	pass
+
+func _on_Tween_tween_completed(object, key):
+	queue_free()
